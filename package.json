@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "dependencies": {
+    "changes-stream": "^1.1.0",
+    "normalize-registry-metadata": "^1.1.2",
+    "readable-stream": "^2.1.4"
+  }
+}

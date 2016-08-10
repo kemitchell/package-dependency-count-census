@@ -30,12 +30,12 @@ prototype._write = function (chunk, encoding, callback) {
   var name = chunk.name
   var versions = chunk.versions
   Object.keys(versions).forEach(function (version) {
-    self.emit('count', {
-      sequence: sequence,
-      name: name,
-      version: version,
-      dependencies: Object.keys(versions[version] || {}).length
-    })
+    self.emit('count', [
+      sequence,
+      name,
+      version,
+      Object.keys(versions[version] || {}).length
+    ])
   })
   callback()
 }
@@ -63,7 +63,13 @@ changes
 .pipe(follower)
 .on('error', logError)
 .on('count', function (data) {
-  console.log(JSON.stringify(data))
+  console.log(
+    data
+    .map(function (element) {
+      return element.toString()
+    })
+    .join('\t')
+  )
 })
 
 function logError (error) {

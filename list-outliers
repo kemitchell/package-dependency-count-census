@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Usage: <minimum>" >/dev/stderr
+  exit 1
+fi
+awk "{ if (\$4 >= $1) print \$0 }"

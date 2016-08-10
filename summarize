@@ -1,0 +1,5 @@
+#!/bin/bash
+if ! hash ministat ; then
+  sudo apt-get install ministat
+fi
+ministat -n -s -C 4
